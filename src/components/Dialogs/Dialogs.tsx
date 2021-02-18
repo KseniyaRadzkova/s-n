@@ -5,11 +5,12 @@ import Message from "./Message/Message";
 import {
     ActionsTypes,
     DialogsPageType,
-    RootStateType,
+    RootStateType
+} from "../../redux/state";
+import {
     sendMessageActionCreator,
     updateNewMessageBodyActionCreator
-} from "../../redux/state";
-
+} from "../../redux/dialogs-reducer";
 
 type PropsType = {
     dialogsPage: DialogsPageType

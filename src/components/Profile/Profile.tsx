@@ -12,7 +12,7 @@ type PropsType = {
 const Profile = (props: PropsType) => {
     return <div>
         <ProfileInfo/>
-        <MyPosts message ={props.state.profilePage.newPostText}
+        <MyPosts message={props.state.profilePage.newPostText}
                  posts={props.state.profilePage.posts}
                  dispatch={props.dispatch}/>
     </div>
