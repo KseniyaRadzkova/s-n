@@ -2,7 +2,7 @@ import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} fr
 import dialogsReducer, {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
-export type PostType = {
+type PostType = {
     id: number
     message: string
     likesCount: number
@@ -19,20 +19,20 @@ type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
 }
-export type DialogsPageType = {
+type DialogsPageType = {
     dialogs: Array<DialogType>,
     messages: Array<MessageType>,
     newMessageBody: string
 }
 type SidebarType = {}
-export type RootStateType = {
+type RootStateType = {
     profilePage: ProfilePageType,
     dialogsPage: DialogsPageType,
     sidebar: SidebarType
 }
 
 
-export type StoreType = {
+type StoreType = {
     _state: RootStateType
     updateNewPostText: (newText: string) => void
     addPost: (postText: string) => void
@@ -42,7 +42,7 @@ export type StoreType = {
     dispatch: (action: ActionsTypes) => void
 }
 
-export type ActionsTypes =
+type ActionsTypes =
     | ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof updateNewPostTextActionCreator>
     | ReturnType<typeof sendMessageActionCreator>
