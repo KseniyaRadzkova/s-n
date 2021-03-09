@@ -7,6 +7,7 @@ import {Route} from "react-router-dom";
 
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import {ActionsTypes, AppStateType} from "./redux/redux-store";
+import UsersContainer from "./components/Users/UsersContainer";
 
 type PropsType = {
     state: AppStateType
@@ -24,6 +25,8 @@ function App(props: PropsType) {
                        render={() => <DialogsContainer />}/>
                 <Route path={'/profile'}
                        render={() => <Profile />}/>
+                <Route path={'/users'}
+                render={() => <UsersContainer />}/>
             </div>
         </div>
 
