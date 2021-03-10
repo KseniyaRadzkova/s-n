@@ -15,7 +15,6 @@ type MapDispatchPropsType = {
     unfollow: (userId: number) => void
     setUsers: (users: Array<UserType>) => void
 }
-export type UsersPropsType = MapStatePropsType & MapDispatchPropsType
 
 
 
