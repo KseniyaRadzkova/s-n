@@ -1,6 +1,7 @@
 import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} from "./profile-reducer";
 import dialogsReducer, {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
+import {ProfileType} from "../components/Profile/Profile";
 
 type PostType = {
     id: number
@@ -18,6 +19,7 @@ type MessageType = {
 type ProfilePageType = {
     posts: Array<PostType>
     newPostText: string
+    profile: ProfileType | null
 }
 type DialogsPageType = {
     dialogs: Array<DialogType>,
@@ -56,7 +58,8 @@ const store: StoreType = {
                 {id: 1, message: 'Hi, how are you?', likesCount: 15},
                 {id: 2, message: 'It is my first post', likesCount: 20}
             ],
-            newPostText: ''
+            newPostText: '',
+            profile: null
         },
         dialogsPage: {
             dialogs: [

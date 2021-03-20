@@ -1,4 +1,5 @@
 import {ActionsTypes} from "./redux-store";
+import {ProfileType} from "../components/Profile/Profile";
 
 export type PostType = {
     id: number
@@ -9,16 +10,32 @@ export type PostType = {
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
+export type InitialStateType = {
+    posts: Array<PostType>
+    newPostText: string
+    profile: ProfileType | null
+}
+
+// let initialState = {
+//     posts: [
+//         {id: 1, message: 'Hi, how are you?', likesCount: 15},
+//         {id: 2, message: 'It is my first post', likesCount: 20}
+//     ] as Array<PostType>,
+//     newPostText: '',
+//     profile: null as ProfileType | null
+// }
 let initialState = {
     posts: [
         {id: 1, message: 'Hi, how are you?', likesCount: 15},
         {id: 2, message: 'It is my first post', likesCount: 20}
-    ] as Array<PostType>,
-    newPostText: ''
+    ],
+    newPostText: '',
+    profile:  null
 }
 
-export type InitialStateType = typeof initialState
+// export type InitialStateType = typeof initialState
 
 const profileReducer = (state: InitialStateType = initialState, action: ActionsTypes): InitialStateType => {
     switch (action.type) {
@@ -40,6 +57,12 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionsT
                 newPostText: action.newText
             };
         }
+        case SET_USER_PROFILE: {
+            return {
+                ...state,
+                profile: action.profile
+            };
+        }
         default:
             return state;
     }
@@ -55,5 +78,9 @@ export const updateNewPostTextActionCreator = (newText: string) => {
         type: UPDATE_NEW_POST_TEXT, newText: newText
     } as const
 }
-
+export const setUserProfile = (profile: ProfileType | null) => {
+    return {
+        type: SET_USER_PROFILE, profile: profile
+    } as const
+}
 export default profileReducer;
