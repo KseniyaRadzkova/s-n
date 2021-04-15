@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dispatch} from 'redux';
+import {compose, Dispatch} from 'redux';
 import {
     InitialStateType,
     sendMessageActionCreator,
@@ -35,8 +35,8 @@ let mapDispatchToProps = (dispatch: Dispatch): MapDispatchPropsType => {
     }
 }
 
-let AuthRedirectComponent = withAuthRedirect(Dialogs);
+export default compose<React.ComponentType>(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(Dialogs);
 
-
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(AuthRedirectComponent);
-export default DialogsContainer;
