@@ -18,7 +18,7 @@ type PhotosPropsType = {
     large: string
 }
 export type ProfileType = {
-    userId: string
+    userId: number
     lookingForAJob: boolean
     lookingForAJobDescription: string
     fullName: string
