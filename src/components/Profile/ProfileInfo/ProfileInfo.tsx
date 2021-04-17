@@ -2,24 +2,28 @@ import React from 'react';
 import s from './ProfileInfo.module.css';
 import Preloader from "../../common/Preloader/Preloader";
 import {ProfileType} from "../Profile";
+import ProfileStatus from "./ProfileStatus";
+import photoImage from './../../../assets/images/sea.jpeg';
 
 type ProfileInfoType = {
     profile: ProfileType | null
 }
 
 const ProfileInfo = (props: ProfileInfoType) => {
+    const backgroundImg = {
+        backgroundImage: `url(${photoImage})`,
+    };
+
     if (!props.profile) {
         return <Preloader />
     }
     return <div>
         <div>
-            <img
-                src='https://i0.wp.com/curioustravelbug.com/wp-content/uploads/2019/04/La-Rijana-Beach-Spain-Andalucia-Costa-Tropical-Panoramic.jpg?fit=800%2C534&ssl=1'
-            alt="bigImage"/>
+            <img style={backgroundImg} alt="bigImage"/>
         </div>
         <div className={s.descriptionBlock}>
-            <img src={props.profile.photos.large} />
-            ava + discribtion
+            <img alt={'profile'} src={props.profile.photos.large} />
+            <ProfileStatus status={"Hello my friends"}/>
         </div>
     </div>
 }
