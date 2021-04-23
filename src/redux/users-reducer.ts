@@ -33,8 +33,8 @@ type InitialStateType = {
 
 let initialState: InitialStateType = {
     users: [],
-    pageSize: 5,
-    totalUsersCount: 0,
+    pageSize: 25,
+    totalUsersCount: 20,
     currentPage: 1,
     isFetching: true,
     followingInProgress: [],
@@ -128,13 +128,16 @@ export const toggleFollowingProgress = (followingInProgress: boolean, userId: nu
 export const getUsers = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch<ActionsTypes>) => {
         dispatch(toggleIsFetching(true));
-        usersAPI.getUsers(currentPage, pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setUsersTotalCount(data.totalCount));
-        });
+        usersAPI.getUsers(currentPage, pageSize)
+            .then(data => {
+                dispatch(setCurrentPage(currentPage))
+                dispatch(toggleIsFetching(false));
+                dispatch(setUsers(data.items));
+                dispatch(setUsersTotalCount(data.totalCount));
+            });
     }
 }
+
 
 type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsTypes>
 type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ActionsTypes>

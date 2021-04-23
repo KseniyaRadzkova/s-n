@@ -1,7 +1,6 @@
-import profileReducer, {addPostActionCreator, updateNewPostTextActionCreator} from "./profile-reducer";
-import dialogsReducer, {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "./dialogs-reducer";
-import sidebarReducer from "./sidebar-reducer";
-import {ProfileType} from "../components/Profile/Profile";
+import {addPostActionCreator, ProfileType, updateNewPostTextActionCreator} from "./profile-reducer";
+import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "./dialogs-reducer";
+
 
 type PostType = {
     id: number
@@ -108,14 +107,12 @@ const store: StoreType = {
         this._callSubscriber();
     },
     dispatch(action: ActionsTypes) {
-        this._state.profilePage = profileReducer(this._state.profilePage, action);
-        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-        this._state.sidebar = sidebarReducer(this._state.sidebar, action);
+        // this._state.profilePage = profileReducer(this._state.profilePage, action);
+        // this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        // this._state.sidebar = sidebarReducer(this._state.sidebar, action);
         this._callSubscriber();
     }
 }
 
 
-
-
-export default store;
+// export default store;

@@ -21,10 +21,27 @@ export const usersAPI = {
         return instance.delete(`follow/${id}`)
             .then(response => response.data)
     },
-    getProfile(id: number) {
-        return instance.get(`profile/` + id);
+    getProfile(id: string) {
+        console.warn('Obsolete method.Please profileAPI object.')
+        return profileAPI.getProfile(id);
     }
 }
+
+type UpdateStatusAxiosT = { data: {}, resultCode: number, messages: string[] };
+
+export const profileAPI = {
+    getProfile(id: string) {
+        return instance.get(`profile/` + id);
+    },
+    getStatus(id: string) {
+        return instance.get(`profile/status/` + id);
+    },
+    updateStatus(status: string | null) {
+        return instance.put<UpdateStatusAxiosT>(`profile/status`, {status: status});
+    },
+
+}
+
 
 export const authAPI = {
     me() {

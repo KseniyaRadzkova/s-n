@@ -1,5 +1,10 @@
 import {applyMiddleware, combineReducers, createStore} from "redux";
-import profileReducer, {addPostActionCreator, setUserProfile, updateNewPostTextActionCreator} from "./profile-reducer";
+import profileReducer, {
+    addPostActionCreator,
+    setStatus,
+    setUserProfile,
+    updateNewPostTextActionCreator
+} from "./profile-reducer";
 import dialogsReducer, {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import usersReducer, {
@@ -17,6 +22,7 @@ export type ActionsTypes =
     | ReturnType<typeof addPostActionCreator>
     | ReturnType<typeof updateNewPostTextActionCreator>
     | ReturnType<typeof setUserProfile>
+    | ReturnType<typeof setStatus>
     | ReturnType<typeof sendMessageActionCreator>
     | ReturnType<typeof updateNewMessageBodyActionCreator>
     | ReturnType<typeof followSuccess>
@@ -27,6 +33,7 @@ export type ActionsTypes =
     | ReturnType<typeof toggleIsFetching>
     | ReturnType<typeof toggleFollowingProgress>
     | ReturnType<typeof setAuthUserData>
+
 
 
 let rootReducer = combineReducers({
