@@ -1,5 +1,5 @@
-import {addPostActionCreator, ProfileType, updateNewPostTextActionCreator} from "./profile-reducer";
-import {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "./dialogs-reducer";
+import {addPostActionCreator, ProfileType} from "./profile-reducer";
+import {sendMessageActionCreator} from "./dialogs-reducer";
 
 
 type PostType = {
@@ -35,7 +35,7 @@ type RootStateType = {
 
 type StoreType = {
     _state: RootStateType
-    updateNewPostText: (newText: string) => void
+    // updateNewPostText: (newText: string) => void
     addPost: (postText: string) => void
     _callSubscriber: () => void,
     subscribe: (observer: () => void) => void
@@ -45,9 +45,7 @@ type StoreType = {
 
 type ActionsTypes =
     | ReturnType<typeof addPostActionCreator>
-    | ReturnType<typeof updateNewPostTextActionCreator>
     | ReturnType<typeof sendMessageActionCreator>
-    | ReturnType<typeof updateNewMessageBodyActionCreator>
 
 
 const store: StoreType = {
@@ -92,10 +90,10 @@ const store: StoreType = {
         this._callSubscriber = observer;
     },
 
-    updateNewPostText(newText: string) {
-        this._state.profilePage.newPostText = newText
-        this._callSubscriber();
-    },
+    // updateNewPostText(newText: string) {
+    //     this._state.profilePage.newPostText = newText
+    //     this._callSubscriber();
+    // },
     addPost(postText: string) {
         let newPost: PostType = {
             id: new Date().getTime(),

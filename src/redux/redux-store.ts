@@ -2,10 +2,9 @@ import {applyMiddleware, combineReducers, createStore} from "redux";
 import profileReducer, {
     addPostActionCreator,
     setStatus,
-    setUserProfile,
-    updateNewPostTextActionCreator
+    setUserProfile
 } from "./profile-reducer";
-import dialogsReducer, {sendMessageActionCreator, updateNewMessageBodyActionCreator} from "./dialogs-reducer";
+import dialogsReducer, {sendMessageActionCreator} from "./dialogs-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import usersReducer, {
     followSuccess,
@@ -21,11 +20,9 @@ import { reducer as formReducer } from 'redux-form';
 
 export type ActionsTypes =
     | ReturnType<typeof addPostActionCreator>
-    | ReturnType<typeof updateNewPostTextActionCreator>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setStatus>
     | ReturnType<typeof sendMessageActionCreator>
-    | ReturnType<typeof updateNewMessageBodyActionCreator>
     | ReturnType<typeof followSuccess>
     | ReturnType<typeof unFollowSuccess>
     | ReturnType<typeof setUsers>

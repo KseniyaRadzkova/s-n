@@ -32,7 +32,6 @@ export type ProfileType = {
 }
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 
@@ -56,8 +55,8 @@ let initialState = {
         {id: 1, message: 'Hi, how are you?', likesCount: 15},
         {id: 2, message: 'It is my first post', likesCount: 20}
     ],
-    newPostText: '',
     profile: null,
+    newPostText: "",
     status: ''
 }
 
@@ -68,19 +67,13 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionsT
         case ADD_POST: {
             let newPost: PostType = {
                 id: new Date().getTime(),
-                message: action.postText,
+                message: action.newPostText,
                 likesCount: 0
             };
             return {
                 ...state,
                 posts: [...state.posts, newPost],
                 newPostText: ''
-            };
-        }
-        case UPDATE_NEW_POST_TEXT: {
-            return {
-                ...state,
-                newPostText: action.newText
             };
         }
         case SET_STATUS: {
@@ -100,14 +93,9 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionsT
     }
 }
 
-export const addPostActionCreator = (postText: string) => {
+export const addPostActionCreator = (newPostText: string) => {
     return {
-        type: ADD_POST, postText: postText
-    } as const
-}
-export const updateNewPostTextActionCreator = (newText: string) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT, newText: newText
+        type: ADD_POST, newPostText
     } as const
 }
 export const setUserProfile = (profile: ProfileType | null) => {
