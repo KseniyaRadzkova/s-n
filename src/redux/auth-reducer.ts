@@ -44,7 +44,7 @@ type ThunkType = ThunkAction<void, AppStateType, unknown, ActionsTypes>
 type ThunkDispatchType = ThunkDispatch<AppStateType, unknown, ActionsTypes | FormAction>
 
 export const getAuthUserData = (): ThunkType => (dispatch: ThunkDispatchType) => {
-    authAPI.me()
+    return authAPI.me()
         .then(response => {
             if (response.data.resultCode === 0) {
                 let {id, login, email} = response.data.data;

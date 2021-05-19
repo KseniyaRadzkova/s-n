@@ -11,7 +11,7 @@ import {
 import Users from './Users';
 import Preloader from "../common/Preloader/Preloader";
 import {compose} from "redux";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+
 
 type UserPropsType = {
     users: Array<UserType>
@@ -110,7 +110,7 @@ let mapStateToProps = (state: AppStateType): MapStatePropsType => {
 // }
 
 export default compose<React.ComponentType>(
-    withAuthRedirect,
+    // withAuthRedirect,
     connect(mapStateToProps, {
         follow,
         unfollow,

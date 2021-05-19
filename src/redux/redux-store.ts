@@ -17,6 +17,7 @@ import usersReducer, {
 import authReducer, {setAuthUserData} from "./auth-reducer";
 import thunkMiddleWare from "redux-thunk";
 import { reducer as formReducer } from 'redux-form';
+import appReducer, {initializedSuccess} from "./app-reducer";
 
 export type ActionsTypes =
     | ReturnType<typeof addPostActionCreator>
@@ -31,6 +32,8 @@ export type ActionsTypes =
     | ReturnType<typeof toggleIsFetching>
     | ReturnType<typeof toggleFollowingProgress>
     | ReturnType<typeof setAuthUserData>
+    | ReturnType<typeof initializedSuccess>
+
 
 
 
@@ -40,7 +43,8 @@ let rootReducer = combineReducers({
     sidebar: sidebarReducer,
     usersPage: usersReducer,
     auth: authReducer,
-    form: formReducer
+    form: formReducer,
+    app: appReducer
 });
 
 export type AppStateType = ReturnType<typeof rootReducer>
