@@ -34,6 +34,7 @@ export type ProfileType = {
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const DELETE_POST ='DELETE_POST'
 
 export type InitialStateType = {
     posts: Array<PostType>
@@ -57,7 +58,7 @@ let initialState = {
     ],
     profile: null,
     newPostText: "",
-    status: ''
+    status: '',
 }
 
 // export type InitialStateType = typeof initialState
@@ -88,6 +89,12 @@ const profileReducer = (state: InitialStateType = initialState, action: ActionsT
                 profile: action.profile
             };
         }
+        case DELETE_POST: {
+            return {
+                ...state,
+                posts: state.posts.filter(p => p.id !== action.id)
+            };
+        }
         default:
             return state;
     }
@@ -106,6 +113,11 @@ export const setUserProfile = (profile: ProfileType | null) => {
 export const setStatus = (status: string | null) => {
     return {
         type: SET_STATUS, status
+    } as const
+}
+export const deletePost = (id: number) => {
+    return {
+        type: DELETE_POST, id
     } as const
 }
 
